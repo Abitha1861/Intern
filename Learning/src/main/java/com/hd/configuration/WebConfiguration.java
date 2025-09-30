@@ -33,7 +33,7 @@ import com.zaxxer.hikari.HikariDataSource;
 @EnableScheduling
 @EnableAsync
 @ComponentScan({ "com.hd.common", 
-"com.hd.controlller","com.hd.model"
+"com.hd.controlller","com.hd.model","com.hd.repo"
 }) 
 public class WebConfiguration extends WebSecurityConfigurerAdapter implements WebMvcConfigurer, Database  
 {
