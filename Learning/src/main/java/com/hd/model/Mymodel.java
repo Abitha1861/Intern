@@ -28,9 +28,12 @@ public class Mymodel
 	}
 	
 	
-	public void user_detail(String message) 
-	{		
+	public JsonObject user_detail(String message) 
+	{	
+		JsonObject detail = new JsonObject();
+		
 		try {
+			
 			
 			System.out.println(message);
 			
@@ -49,6 +52,12 @@ public class Mymodel
 			
 			System.out.println(age);
 			
+			String sql = "INSERT INTO USER_TABLE (username, user_age) VALUES (?, ?)";
+				 																						
+			Jdbctemplate.update(sql, name, age);
+			
+			detail.addProperty("name", name);
+			detail.addProperty("status", "success");
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -57,6 +66,7 @@ public class Mymodel
             e.printStackTrace();
             
 		}
+		return detail;
 
 
 	}

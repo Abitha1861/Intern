@@ -33,10 +33,10 @@ public class Mycontroller
 	public void setJdbctemplate(HikariDataSource Datasource){
 		Jdbctemplate = new JdbcTemplate(Datasource);
 	}
-//	
-//	@Autowired
-//	public Mymodel md;
-//	
+	
+	@Autowired
+	public Mymodel md;
+	
 	
     @RequestMapping(value = {"/first_page","/"}, method = RequestMethod.GET)
     public ModelAndView showAddBookPage(HttpServletRequest request,HttpServletResponse response,HttpSession session) 
@@ -65,9 +65,9 @@ public class Mycontroller
     {
     	JsonObject details = new JsonObject();
     	
-    	Mymodel md = new Mymodel();
+    	//Mymodel md = new Mymodel();
     	
-    	md.user_detail(Message);
+    	details = md.user_detail(Message);
     	
     	return details.toString();
     }
