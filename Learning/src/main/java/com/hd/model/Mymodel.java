@@ -65,11 +65,58 @@ public class Mymodel
 			System.err.println("Error while processing the request: " + e.getMessage());
             e.printStackTrace();
             
+			detail.addProperty("status", "failed");
+            
 		}
 		return detail;
 
 
 	}
+	
+	
+	public JsonObject adress(String message) 
+	{	
+		JsonObject detail = new JsonObject();
+		
+		try {
+			
+			
+			System.out.println(message);
+			
+			System.out.println("---------------------------");
+			 
+			JsonObject js = new JsonObject();
+
+			JsonParser parser = new JsonParser();
+			 
+			js = parser.parse(message).getAsJsonObject();
+			
+			String name = js.get("name").getAsString();
+			String age = js.get("age").getAsString();
+			
+			System.out.println(name);
+			
+			System.out.println(age);
+			
+			String sql = "INSERT INTO USER_TABLE (username, user_age) VALUES (?, ?)";
+				 																						
+			Jdbctemplate.update(sql, name, age);
+			
+			detail.addProperty("name", name);
+			detail.addProperty("status", "success");
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			
+			System.err.println("Error while processing the request: " + e.getMessage());
+            e.printStackTrace();
+            
+		}
+		return detail;
+
+
+	}
+
 	
 	
 	

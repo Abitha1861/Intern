@@ -65,13 +65,22 @@ public class Mycontroller
     {
     	JsonObject details = new JsonObject();
     	
-    	//Mymodel md = new Mymodel();
-    	
     	details = md.user_detail(Message);
     	
     	return details.toString();
     }
     
+    @RequestMapping(value = "/Adress", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+    public @ResponseBody String address(@RequestBody String Message, HttpServletRequest request,HttpServletResponse response, HttpSession session) throws IOException 
+    {
+    	JsonObject details = new JsonObject();
+    	
+    	System.out.println(Message);
+    	
+//    	details = md.adress(Message);
+    	
+    	return details.toString();
+    }
     
     
 }
